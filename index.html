@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LabBook | Digital Lab Equipment Booking</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="loginView" class="login-page">
+    <section class="login-card">
+      <div class="brand"><span class="brand-mark">L</span><span>LabBook</span></div>
+      <div class="login-copy">
+        <p class="eyebrow">DIGITAL LAB EQUIPMENT BOOKING</p>
+        <h1 id="loginTitle">Welcome back.</h1>
+        <p id="loginDescription">Sign in with your college email to explore and book laboratory equipment.</p>
+      </div>
+      <form id="emailForm">
+        <label for="email">College email</label>
+        <input id="email" type="email" placeholder="name@college.edu" required>
+        <button class="primary-btn" type="submit">Continue with email <span>→</span></button>
+      </form>
+      <form id="otpForm" class="hidden">
+        <label for="otp">Verification code</label>
+        <input id="otp" type="text" inputmode="numeric" maxlength="6" placeholder="Enter 6-digit code" required>
+        <p class="hint" id="otpHint">Demo code: 123456</p>
+        <button class="primary-btn" type="submit">Verify and sign in <span>→</span></button>
+        <button type="button" class="text-btn" id="backBtn">Use a different email</button>
+      </form>
+      <p class="fine-print">Student project demonstration · No real email is sent</p>
+    </section>
+    <section class="login-art">
+      <div class="art-top"><span>LEARN · EXPLORE · BOOK</span><span class="art-dot"></span></div>
+      <img src="assets/lab-illustration.svg" alt="Illustration of laboratory equipment">
+      <div class="art-caption"><h2>Your lab, a little more organised.</h2><p>Find the equipment you need. Request it in a few clicks.</p></div>
+      <div class="art-bottom"><span>01 / SIMPLE BOOKING</span><span>MADE FOR CAMPUS</span></div>
+    </section>
+  </main>
+
+  <main id="appView" class="app hidden">
+    <aside class="sidebar">
+      <a class="brand side-brand" href="#"><span class="brand-mark">L</span><span>LabBook</span></a>
+      <p class="side-label">WORKSPACE</p>
+      <button class="nav-link active" data-page="dashboard"><span>⌂</span> Overview</button>
+      <button class="nav-link" data-page="equipment"><span>▦</span> Equipment</button>
+      <button class="nav-link" data-page="bookings"><span>▤</span> My bookings <span class="nav-count" id="bookingCount">0</span></button>
+      <button class="nav-link" data-page="admin"><span>✓</span> Admin approvals</button>
+      <div class="sidebar-bottom">
+        <div class="user-mini"><div class="avatar">S</div><div><strong id="sideUser">Student</strong><small>Student account</small></div></div>
+        <button class="logout-btn" id="logoutBtn">Log out</button>
+      </div>
+    </aside>
+
+    <section class="main-area">
+      <header class="topbar"><div><span class="eyebrow">CAMPUS LABORATORY</span><h2 id="pageHeading">Overview</h2></div><div class="top-user"><span class="status-dot"></span><span id="topUser">Student</span></div></header>
+
+      <section id="dashboardPage" class="page">
+        <div class="welcome-banner">
+          <div><p class="eyebrow">YOUR LAB WORKSPACE</p><h1>Good to see you<span class="yellow-period">.</span></h1><p>Find the right tools for your next experiment.</p><button class="dark-btn" data-go="equipment">Explore equipment <span>→</span></button></div>
+          <img src="assets/lab-illustration.svg" alt="Laboratory equipment illustration">
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">AT A GLANCE</p><h3>Lab overview</h3></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><span class="stat-icon">▦</span><p>Equipment listed</p><strong id="totalEquipment">6</strong><small>In the catalogue</small></article>
+          <article class="stat-card"><span class="stat-icon">✓</span><p>Available now</p><strong id="availableEquipment">5</strong><small>Ready to request</small></article>
+          <article class="stat-card"><span class="stat-icon">▤</span><p>My requests</p><strong id="totalBookings">0</strong><small>Booking requests</small></article>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">QUICK PICKS</p><h3>Popular equipment</h3></div><button class="plain-link" data-go="equipment">View all →</button></div>
+        <div class="equipment-grid compact" id="popularGrid"></div>
+      </section>
+
+      <section id="equipmentPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">FIND WHAT YOU NEED</p><h1>Equipment catalogue<span class="yellow-period">.</span></h1><p>Browse shared laboratory equipment and send a booking request.</p></div>
+        <div class="filter-row"><input id="searchInput" type="search" placeholder="Search equipment..."><select id="categoryFilter"><option value="All">All categories</option><option>Electronics</option><option>Optics</option><option>General Lab</option></select></div>
+        <div class="equipment-grid" id="equipmentGrid"></div>
+      </section>
+
+      <section id="bookingsPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">YOUR ACTIVITY</p><h1>My bookings<span class="yellow-period">.</span></h1><p>Check the status of your equipment requests.</p></div>
+        <div id="bookingList" class="booking-list"></div>
+      </section>
+
+      <section id="adminPage" class="page hidden">
+        <div class="page-intro"><p class="eyebrow">ADMIN WORKSPACE</p><h1>Booking approvals<span class="yellow-period">.</span></h1><p>Review student requests and approve or reject them.</p></div>
+        <div class="admin-note">Demo admin panel: for this student project, anyone signed in can open this page.</div>
+        <div id="adminBookingList" class="booking-list"></div>
+      </section>
+      <footer>LabBook · Digital Lab Equipment Booking System <span>Student project demo</span></footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
